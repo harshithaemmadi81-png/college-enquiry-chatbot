@@ -1,0 +1,66 @@
+COLLEGE NAME:
+Malla Reddy Engineering College for Women (MRECW)
+
+LOCATION:
+Maisammaguda, Hyderabad, Telangana
+
+COURSES:
+1. B.Tech Artificial Intelligence and Machine Learning (AIML)
+2. B.Tech Computer Science and Engineering (CSE)
+3. B.Tech Information Technology (IT)
+4. B.Tech Computer Science and Data Science (CSD)
+5. B.Tech Electrical and Electronics Engineering (EEE)
+6. B.Tech Electronics and Communication Engineering (ECE)
+
+TOTAL COURSES:
+6
+
+DEPARTMENTS:
+1. AIML - Artificial Intelligence and Machine Learning
+2. CSE - Computer Science and Engineering
+3. IT - Information Technology
+4. CSD - Computer Science and Data Science
+5. EEE - Electrical and Electronics Engineering
+6. ECE - Electronics and Communication Engineering
+
+TOTAL DEPARTMENTS:
+6
+
+BLOCKS:
+1. AIML Block
+2. CSE Block
+3. IT Block
+4. CSD Block
+5. EEE Block
+6. ECE Block
+
+TOTAL BLOCKS:
+6
+
+HOSTELS:
+1. Hostel 1
+2. Hostel 2
+3. Apartment Hostel
+
+TOTAL HOSTEL FACILITIES:
+2 Hostels + 1 Apartment Hostel
+
+CANTEEN:
+1 Canteen
+
+EINSTEIN BLOCK:
+1 Einstein Block
+
+EINSTEIN BLOCK ACTIVITIES:
+- Placement-related activities
+- Student programmes
+- Training sessions
+- Events
+- Other college activities
+
+ADMISSIONS:
+1. EAMCET / TG EAPCET
+2. ECET
+3. Management Quota
+
+ECET AD
