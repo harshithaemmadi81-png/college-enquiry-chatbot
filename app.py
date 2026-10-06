@@ -1,21 +1,101 @@
 import streamlit as st
 
-# Page Configuration
+# =========================================================
+# PAGE CONFIGURATION
+# =========================================================
 st.set_page_config(
     page_title="MRECW College Enquiry Chatbot",
     page_icon="🎓",
     layout="centered"
 )
 
-# Title
+# =========================================================
+# CUSTOM DESIGN
+# =========================================================
+st.markdown("""
+<style>
+
+.stApp {
+    background-color: #F2F2F2;
+}
+
+h1 {
+    color: #800000 !important;
+    text-align: center;
+    font-weight: 800;
+}
+
+h2, h3 {
+    color: #800000 !important;
+}
+
+.stApp p, .stApp li {
+    color: #333333;
+}
+
+label {
+    color: #800000 !important;
+    font-weight: 700 !important;
+}
+
+div[data-baseweb="input"] {
+    background-color: #FFD6E0 !important;
+    border: 2px solid #E8A9B8 !important;
+    border-radius: 12px !important;
+}
+
+div[data-baseweb="input"] input {
+    background-color: #FFD6E0 !important;
+    color: #5C2633 !important;
+    font-weight: 500 !important;
+}
+
+.answer-box {
+    background-color: #E8DFFF;
+    border: 2px solid #CDB8F0;
+    border-radius: 15px;
+    padding: 18px;
+    margin-top: 12px;
+    margin-bottom: 15px;
+    color: #333333;
+}
+
+div[data-testid="stAlert"] {
+    border-radius: 12px !important;
+}
+
+.stButton > button {
+    background-color: #E8DFFF;
+    color: #5A3478;
+    border-radius: 10px;
+    border: 1px solid #CDB8F0;
+}
+
+.stButton > button:hover {
+    background-color: #DCCBFA;
+}
+
+</style>
+""", unsafe_allow_html=True)
+
+
+# =========================================================
+# TITLE
+# =========================================================
 st.title("🎓 MRECW College Enquiry Chatbot")
 st.write("Welcome! Ask me anything about the college.")
 
-# College Information
+
+# =========================================================
+# COLLEGE INFORMATION
+# =========================================================
 college_name = "Malla Reddy Engineering College for Women (MRECW)"
 location = "Maisammaguda, Hyderabad, Telangana"
 
-# Courses
+
+# =========================================================
+# COURSES
+# =========================================================
 courses = [
     "B.Tech Artificial Intelligence and Machine Learning (AIML)",
     "B.Tech Computer Science and Engineering (CSE)",
@@ -25,7 +105,10 @@ courses = [
     "B.Tech Electronics and Communication Engineering (ECE)"
 ]
 
-# Departments
+
+# =========================================================
+# DEPARTMENTS
+# =========================================================
 departments = [
     "AIML - Artificial Intelligence and Machine Learning",
     "CSE - Computer Science and Engineering",
@@ -35,7 +118,10 @@ departments = [
     "ECE - Electronics and Communication Engineering"
 ]
 
-# Blocks
+
+# =========================================================
+# BLOCKS
+# =========================================================
 blocks = [
     "AIML Block",
     "CSE Block",
@@ -45,14 +131,20 @@ blocks = [
     "ECE Block"
 ]
 
-# Hostels
+
+# =========================================================
+# HOSTELS
+# =========================================================
 hostels = [
     "Hostel 1",
     "Hostel 2",
     "Apartment Hostel"
 ]
 
-# Questions
+
+# =========================================================
+# QUESTIONS
+# =========================================================
 st.subheader("💬 Please ask about:")
 
 st.write("""
@@ -75,404 +167,340 @@ st.write("""
 • Einstein Block
 • Labs
 • Sports
-• Transport
+• Transport / Local Buses
 """)
 
-# User Question
-question = st.text_input("Ask your question:")
 
+# =========================================================
+# USER QUESTION
+# =========================================================
+question = st.text_input(
+    "Ask your question:",
+    placeholder="Type your question here..."
+)
+
+
+# =========================================================
+# ANSWERS
+# =========================================================
 if question:
 
     q = question.lower().strip()
 
-    # College Name
+    # -----------------------------------------------------
+    # COLLEGE NAME
+    # -----------------------------------------------------
     if "college name" in q or "name of college" in q:
+
         st.subheader("🏫 College Information")
-        st.write(f"**College Name:** {college_name}")
-        st.write(
-            "MRECW is a women's engineering college located in "
-            "Maisammaguda, Hyderabad, Telangana."
-        )
 
-    # Location
+        st.markdown(f"""
+        <div class="answer-box">
+
+        <b>College Name:</b> {college_name}
+
+        <br><br>
+
+        MRECW is a women's engineering college located in
+        Maisammaguda, Hyderabad, Telangana.
+
+        </div>
+        """, unsafe_allow_html=True)
+
+
+    # -----------------------------------------------------
+    # LOCATION
+    # -----------------------------------------------------
     elif "location" in q or "where is" in q or "address" in q:
-        st.subheader("📍 College Location")
-        st.write(f"**Location:** {location}")
 
-    # Courses
+        st.subheader("📍 College Location")
+
+        st.markdown(f"""
+        <div class="answer-box">
+
+        <b>Location:</b> {location}
+
+        </div>
+        """, unsafe_allow_html=True)
+
+
+    # -----------------------------------------------------
+    # COURSES
+    # -----------------------------------------------------
     elif "course" in q or "courses" in q:
+
         st.subheader("📚 Courses Offered")
 
+        answer = "<div class='answer-box'>"
+
         for i, course in enumerate(courses, 1):
-            st.write(f"**{i}. {course}**")
+            answer += f"<b>{i}. {course}</b><br>"
 
-        st.info("Total Courses: 6")
+        answer += "<br><b>Total Courses: 6</b></div>"
 
+        st.markdown(answer, unsafe_allow_html=True)
+
+
+    # -----------------------------------------------------
     # AIML
+    # -----------------------------------------------------
     elif "aiml" in q or "artificial intelligence" in q:
+
         st.subheader("🤖 Artificial Intelligence and Machine Learning")
 
-        st.write("""
-        **B.Tech Artificial Intelligence and Machine Learning (AIML)**
+        st.markdown("""
+        <div class="answer-box">
+
+        <b>B.Tech Artificial Intelligence and Machine Learning (AIML)</b>
+
+        <br><br>
 
         This programme generally focuses on:
 
-        • Artificial Intelligence
-        • Machine Learning
-        • Python Programming
-        • Data Analysis
-        • Algorithms
-        • Deep Learning
-        • Intelligent Applications
-        """)
+        <br><br>
 
+        • Artificial Intelligence<br>
+        • Machine Learning<br>
+        • Python Programming<br>
+        • Data Analysis<br>
+        • Algorithms<br>
+        • Deep Learning<br>
+        • Intelligent Applications
+
+        </div>
+        """, unsafe_allow_html=True)
+
+
+    # -----------------------------------------------------
     # CSE
+    # -----------------------------------------------------
     elif "cse" in q or "computer science" in q:
+
         st.subheader("💻 Computer Science and Engineering")
 
-        st.write("""
-        **B.Tech Computer Science and Engineering (CSE)**
+        st.markdown("""
+        <div class="answer-box">
+
+        <b>B.Tech Computer Science and Engineering (CSE)</b>
+
+        <br><br>
 
         Major areas generally include:
 
-        • Programming
-        • Data Structures
-        • Database Management
-        • Operating Systems
-        • Computer Networks
-        • Software Development
-        """)
+        <br><br>
 
+        • Programming<br>
+        • Data Structures<br>
+        • Database Management<br>
+        • Operating Systems<br>
+        • Computer Networks<br>
+        • Software Development
+
+        </div>
+        """, unsafe_allow_html=True)
+
+
+    # -----------------------------------------------------
     # IT
+    # -----------------------------------------------------
     elif (
         "information technology" in q
         or q == "it"
         or " it " in f" {q} "
     ):
+
         st.subheader("💻 Information Technology")
 
-        st.write("""
-        **B.Tech Information Technology (IT)**
+        st.markdown("""
+        <div class="answer-box">
+
+        <b>B.Tech Information Technology (IT)</b>
+
+        <br><br>
 
         Major areas generally include:
 
-        • Programming
-        • Database Systems
-        • Networking
-        • Information Systems
-        • Web Technologies
-        • IT Applications
-        """)
+        <br><br>
 
+        • Programming<br>
+        • Database Systems<br>
+        • Networking<br>
+        • Information Systems<br>
+        • Web Technologies<br>
+        • IT Applications
+
+        </div>
+        """, unsafe_allow_html=True)
+
+
+    # -----------------------------------------------------
     # CSD
+    # -----------------------------------------------------
     elif "csd" in q or "data science" in q:
+
         st.subheader("📊 Computer Science and Data Science")
 
-        st.write("""
-        **B.Tech Computer Science and Data Science (CSD)**
+        st.markdown("""
+        <div class="answer-box">
+
+        <b>B.Tech Computer Science and Data Science (CSD)</b>
+
+        <br><br>
 
         Major areas generally include:
 
-        • Programming
-        • Data Analysis
-        • Statistics
-        • Databases
-        • Machine Learning
-        • Data Visualization
-        """)
+        <br><br>
 
+        • Programming<br>
+        • Data Analysis<br>
+        • Statistics<br>
+        • Databases<br>
+        • Machine Learning<br>
+        • Data Visualization
+
+        </div>
+        """, unsafe_allow_html=True)
+
+
+    # -----------------------------------------------------
     # EEE
+    # -----------------------------------------------------
     elif "eee" in q or "electrical" in q:
+
         st.subheader("⚡ Electrical and Electronics Engineering")
 
-        st.write("""
-        **B.Tech Electrical and Electronics Engineering (EEE)**
+        st.markdown("""
+        <div class="answer-box">
+
+        <b>B.Tech Electrical and Electronics Engineering (EEE)</b>
+
+        <br><br>
 
         Major areas generally include:
 
-        • Electrical Systems
-        • Electronics
-        • Electrical Machines
-        • Power Systems
-        • Control Systems
-        • Electrical Applications
-        """)
+        <br><br>
 
+        • Electrical Systems<br>
+        • Electronics<br>
+        • Electrical Machines<br>
+        • Power Systems<br>
+        • Control Systems<br>
+        • Electrical Applications
+
+        </div>
+        """, unsafe_allow_html=True)
+
+
+    # -----------------------------------------------------
+    # ECET
+    # IMPORTANT: ECET MUST COME BEFORE ECE
+    # -----------------------------------------------------
+    elif (
+        "ecet" in q
+        or ("diploma" in q and "second year" in q)
+        or ("diploma" in q and "2nd year" in q)
+    ):
+
+        st.subheader("🎓 ECET Admissions")
+
+        st.markdown("""
+        <div class="answer-box">
+
+        <b>ECET (Engineering Common Entrance Test)</b>
+
+        <br><br>
+
+        ECET is for students who have completed a
+        <b>Diploma</b> and want to join B.Tech through
+        <b>lateral entry</b>.
+
+        <br><br>
+
+        <b>Diploma → ECET → B.Tech 2nd Year</b>
+
+        <br><br>
+
+        Eligible Diploma students can get admission
+        directly into the <b>second year of B.Tech</b>
+        through the counselling process, depending on
+        rank, eligibility and seat availability.
+
+        </div>
+        """, unsafe_allow_html=True)
+
+
+    # -----------------------------------------------------
     # ECE
-    elif "ece" in q or "electronics and communication" in q:
+    # -----------------------------------------------------
+    elif (
+        "electronics and communication" in q
+        or q == "ece"
+        or " ece " in f" {q} "
+    ):
+
         st.subheader("📡 Electronics and Communication Engineering")
 
-        st.write("""
-        **B.Tech Electronics and Communication Engineering (ECE)**
+        st.markdown("""
+        <div class="answer-box">
+
+        <b>B.Tech Electronics and Communication Engineering (ECE)</b>
+
+        <br><br>
 
         Major areas generally include:
 
-        • Digital Electronics
-        • Communication Systems
-        • Signals and Systems
-        • Embedded Systems
-        • Electronics
-        """)
+        <br><br>
 
-    # Departments
+        • Digital Electronics<br>
+        • Communication Systems<br>
+        • Signals and Systems<br>
+        • Embedded Systems<br>
+        • Electronics
+
+        </div>
+        """, unsafe_allow_html=True)
+
+
+    # -----------------------------------------------------
+    # DEPARTMENTS
+    # -----------------------------------------------------
     elif "department" in q or "departments" in q:
+
         st.subheader("🏢 Departments")
 
+        answer = "<div class='answer-box'>"
+
         for i, department in enumerate(departments, 1):
-            st.write(f"**{i}. {department}**")
+            answer += f"<b>{i}. {department}</b><br>"
 
-        st.info("Total Departments: 6")
+        answer += "<br><b>Total Departments: 6</b></div>"
 
-    # Blocks
+        st.markdown(answer, unsafe_allow_html=True)
+
+
+    # -----------------------------------------------------
+    # BLOCKS
+    # -----------------------------------------------------
     elif "block" in q or "blocks" in q:
+
         st.subheader("🏫 College Blocks")
 
+        answer = "<div class='answer-box'>"
+
         for i, block in enumerate(blocks, 1):
-            st.write(f"**{i}. {block}**")
+            answer += f"<b>{i}. {block}</b><br>"
 
-        st.info("Total Blocks: 6")
+        answer += "<br><b>Total Blocks: 6</b></div>"
 
-    # Hostel
+        st.markdown(answer, unsafe_allow_html=True)
+
+
+    # -----------------------------------------------------
+    # HOSTEL
+    # -----------------------------------------------------
     elif "hostel" in q or "hostels" in q or "hostle" in q:
+
         st.subheader("🏠 Hostel Facilities")
 
-        for hostel in hostels:
-            st.write(f"• {hostel}")
-
-        st.info("Total: 2 Hostels + 1 Apartment Hostel")
-
-        st.write("""
-        Hostel facilities are available for students.
-
-        For exact information about rooms, food, fees, security,
-        availability and other facilities, students should contact
-        the college administration.
-        """)
-
-    # Canteen
-    elif "canteen" in q:
-        st.subheader("🍽️ Canteen")
-
-        st.write("""
-        The college has **1 canteen** facility.
-
-        Students can use the canteen for food and refreshments.
-        """)
-
-        st.info("Total Canteens: 1")
-
-    # Einstein Block
-    elif "einstein" in q:
-        st.subheader("🏢 Einstein Block")
-
-        st.write("""
-        Einstein Block is an important facility on the college campus.
-
-        It is used for:
-
-        • Placement-related activities
-        • Student programmes
-        • Training sessions
-        • Events and other college activities
-        """)
-
-        st.info("Einstein Blocks: 1")
-
-    # Admissions
-    elif (
-        "admission" in q
-        or "admissions" in q
-        or "mcet" in q
-        or "eamcet" in q
-        or "eapcet" in q
-        or "ecet" in q
-        or "management" in q
-    ):
-        st.subheader("🎓 Admissions")
-
-        st.write("""
-        MRECW admissions are available through different admission routes.
-        """)
-
-        st.write("""
-        **1. EAMCET / TG EAPCET**
-
-        • Students can seek B.Tech admission through the state-level
-          engineering entrance examination and counselling process.
-
-        • Seat allotment depends on eligibility, rank, counselling
-          and seat availability.
-        """)
-
-        st.write("""
-        **2. ECET**
-
-        • Diploma students can apply for B.Tech lateral-entry admission
-          through ECET.
-
-        • Eligible students can join directly into the second year
-          through the counselling process.
-        """)
-
-        st.write("""
-        **3. Management Quota**
-
-        • Admissions may also be available through the management quota.
-
-        • Eligibility, fee structure and seat availability should be
-          confirmed with the college admissions office.
-        """)
-
-        st.info(
-            "Admission rules, fees, eligibility and seat availability "
-            "may change every academic year. Please contact the college "
-            "admissions office for the latest information."
-        )
-
-    # Placements
-    elif (
-        "placement" in q
-        or "placements" in q
-        or "companies" in q
-        or "company" in q
-        or "package" in q
-        or "salary" in q
-    ):
-        st.subheader("💼 Placements")
-
-        st.write("""
-        The college provides placement support and conducts
-        recruitment drives for eligible students.
-
-        Some companies/recruiters associated with placement activities:
-        """)
-
-        companies = [
-            "VISA",
-            "IBM",
-            "Walmart",
-            "Cisco",
-            "HSBC",
-            "Infosys",
-            "TCS",
-            "Cognizant",
-            "Deloitte",
-            "HCLTech",
-            "KPIT",
-            "Accenture",
-            "Capgemini",
-            "Amazon",
-            "Flipkart",
-            "DBS",
-            "KPMG",
-            "Tech Mahindra"
-        ]
-
-        for company in companies:
-            st.write(f"• {company}")
-
-        st.subheader("💰 Recent Placement Highlights")
-
-        st.write("""
-        • VISA – up to ₹32 LPA
-        • IBM – up to ₹19.83 LPA
-        • Walmart – up to ₹18.65 LPA
-        • Cisco – up to ₹18 LPA
-        • HSBC – up to ₹16.8 LPA
-        • Infosys – up to ₹9.5 LPA
-        • TCS – up to ₹9.1 LPA
-        """)
-
-        st.success(
-            "Placement packages depend on the company, role, "
-            "selection process and student performance."
-        )
-
-    # Library
-    elif "library" in q:
-        st.subheader("📖 Library")
-
-        st.write("""
-        The college provides library facilities with books and
-        academic resources for students.
-        """)
-
-    # Exams
-    elif (
-        "exam" in q
-        or "exams" in q
-        or "examination" in q
-        or "examinations" in q
-    ):
-        st.subheader("📝 Examinations")
-
-        st.write("""
-        Examinations are conducted according to the academic calendar
-        and examination schedule.
-        """)
-
-    # Labs
-    elif "lab" in q or "labs" in q:
-        st.subheader("🔬 Laboratories")
-
-        st.write("""
-        Engineering departments use laboratory facilities for
-        practical learning and academic activities.
-        """)
-
-    # Sports
-    elif "sport" in q or "sports" in q:
-        st.subheader("🏃 Sports")
-
-        st.write("""
-        Sports and extracurricular activities support students'
-        overall development.
-        """)
-
-    # Transport
-    elif "transport" in q or "bus" in q:
-        st.subheader("🚌 Transport")
-
-        st.write("""
-        Transport-related information such as routes, timings,
-        fees and availability may change.
-
-        Students should contact the college transport department
-        for the latest details.
-        """)
-
-    # Help
-    elif "help" in q or "what can you answer" in q:
-        st.subheader("🤖 I Can Help You With")
-
-        st.write("""
-        • College
-        • Location
-        • Courses
-        • Departments
-        • Blocks
-        • Hostels
-        • Canteen
-        • Einstein Block
-        • Admissions
-        • EAMCET / TG EAPCET
-        • ECET
-        • Management Admission
-        • Placements
-        • Companies
-        • Packages
-        • Library
-        • Examinations
-        • Labs
-        • Sports
-        • Transport
-        """)
-
-    # Unknown Question
-    else:
-        st.warning(
-            "Sorry, I don't have information about that yet. "
-            "Please ask about College, Courses, Departments, "
-            "Blocks, Admissions, ECET, EAMCET, Management, "
-            "Hostel, Placements, Canteen or Einstein Block."
-        )
+        answer = "<div class='answer-box'>"
+answer = ... 
